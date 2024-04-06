@@ -51,7 +51,9 @@ class Diamond
 
   def self.add_spaces_and_newline(letters_added, string_length)
     # add spaces to the front and back
-
+    string_dif_halved = (string_length - letters_added.length) % 2
+    rjusted = letters_added.rjust(string_dif_halved, ' ')
     # add newline to the end
+    rjusted.ljust(string_dif_halved, ' ') + "\n"
   end
 end
