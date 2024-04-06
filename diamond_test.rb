@@ -7,6 +7,24 @@ class DiamondTest < Minitest::Test
     assert_equal "A\n", answer
   end
 
+  def test_add_letter
+    expected = "B B"
+    actual = Diamond.add_letter("B")
+    assert_equal expected, actual
+
+    expected_2 = "C   C"
+    actual_2 = Diamond.add_letter("C")
+    assert_equal expected_2, actual_2
+  end
+
+  def test_add_spaces_and_newline
+    expected = " B B \n"
+    input_string = "B B"
+    input_length = 5
+    answer       = Diamond.add_spaces_and_newline(input_string, input_length)
+    assert_equal answer, expected
+  end
+
   def test_letter_c
     skip
     answer = Diamond.make_diamond('C')
