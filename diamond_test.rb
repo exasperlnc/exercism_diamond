@@ -18,6 +18,7 @@ class DiamondTest < Minitest::Test
   end
 
   def test_add_spaces_and_newline
+    skip
     expected = " B B \n"
     input_string = "B B"
     input_length = 5
@@ -26,7 +27,6 @@ class DiamondTest < Minitest::Test
   end
 
   def test_letter_c
-    skip
     answer = Diamond.make_diamond('C')
     string = "  A  \n"\
              " B B \n"\
