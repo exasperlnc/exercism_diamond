@@ -19,20 +19,22 @@ class Diamond
   return "A\n" if letter == "A"
   num = @@value_hash[letter.to_sym][0]
   string_length = (num +(2*num)-3)
-  construct_chunk(letter,)
-
+  construct_chunk(letter, string_length)
+  @@result.join
   end
 
   def self.construct_chunk(letter, string_length)
     # only prepend if letter !nil
-    return if letter.nil
+    return if letter.nil?
     # string += (' ' * string_length)
     # only call the new one if the new letter isn't A
     letters_added = add_letter(letter)
     # use the string_length to know the number of spaces
     finished_string = add_spaces_and_newline(letters_added, string_length)
     # throw a \n on the end
-    construct_chunk(@@value_hash[letter_to_sym][1], string_length)
+    @@result << finished_string
+    @@result.unshift(finished_string)
+    construct_chunk(@@value_hash[letter.to_sym][1], string_length)
   end
 
   def self.add_letter(letter)
