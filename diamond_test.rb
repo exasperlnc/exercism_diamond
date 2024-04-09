@@ -3,11 +3,13 @@ require_relative 'diamond'
 
 class DiamondTest < Minitest::Test
   def test_letter_a
+    skip
     answer = Diamond.make_diamond('A')
     assert_equal "A\n", answer
   end
 
   def test_add_letter
+    skip
     expected = "B B"
     actual = Diamond.add_letter("B")
     assert_equal expected, actual

@@ -6,58 +6,11 @@ To get started with TDD, see the `README.md` file in your
 `ruby/diamond` directory.
 =end
 class Diamond
-  @@value_hash = {
-    A: [0, nil],
-    B: [1, "A"],
-    C: [2, "B"],
-    D: [3, "C"],
-    E: [4, "D"]
-  }
-  @@result = []
   def self.make_diamond(letter)
-  # if it's a just return "A\n"
-  return "A\n" if letter == "A"
-  num = @@value_hash[letter.to_sym][0]
-  string_length = (num +(2*num)-3)
-  construct_chunk(letter, string_length)
-  @@result.join
-  end
-
-  def self.construct_chunk(letter, string_length)
-    # only prepend if letter !nil
-    return if letter.nil?
-    # string += (' ' * string_length)
-    # only call the new one if the new letter isn't A
-    letters_added = add_letter(letter)
-    # use the string_length to know the number of spaces
-    finished_string = add_spaces_and_newline(letters_added, string_length)
-    # throw a \n on the end
-    @@result << finished_string
-    @@result.unshift(finished_string)
-    construct_chunk(@@value_hash[letter.to_sym][1], string_length)
-  end
-
-  def self.add_letter(letter)
-    # if it's just A, add one A
-    letter_to_sym = letter.to_sym
-    if letter == "A"
-      return 'A'
-    # else, make a string with 2*letter_index -1 spaces and then two letters
-    else 
-      string = ''
-      num_spaces = (( 2*@@value_hash[letter_to_sym][0] )-1)
-      string.insert(0, (' ' * num_spaces))
-      string.insert(0, letter)
-      string.insert(-1, letter)
-    end
-    # return that string
-  end
-
-  def self.add_spaces_and_newline(letters_added, string_length)
-    # add spaces to the front and back
-    string_dif_halved = (string_length - letters_added.length) / 2
-    rjusted = letters_added.rjust(string_dif_halved, ' ')
-    # add newline to the end
-    rjusted.ljust(string_dif_halved, ' ') + "\n"
+    # return for a only
+    # get array of all used letters
+    # get a string formatted like each line with appropriate char numbers
+    # create top half of diamond
+    # create bottom half and combine
   end
 end
